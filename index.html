@@ -1,21 +1,347 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nguyễn Hữu Lộc - Data Analyst</title>
+    <style>
+        :root {
+            --primary-color: #2E5A27; /* Màu xanh lá tối tương tự CV */
+            --secondary-color: #4A7C59;
+            --bg-color: #F8F9FA;
+            --text-color: #333333;
+            --light-bg: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #D1E8D5;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            background-color: var(--light-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: var(--light-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h3.section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .item {
+            margin-bottom: 25px;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .item-subtitle {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            font-style: italic;
+            color: #666;
+        }
+
+        ul.details-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        ul.details-list li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #F1F5F2;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .skill-category strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .item-header {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Xin chào, mình là Nguyễn Văn A</h1>
-    <p>Frontend Developer</p>
 
-    <h2>Dự án</h2>
-    <ul>
-        <li>Website bán hàng</li>
-        <li>Todo App</li>
-        <li>Portfolio</li>
-    </ul>
+    <header>
+        <h1>Nguyễn Hữu Lộc</h1>
+        <h2>Data Analyst</h2>
+        <div class="contact-info">
+            <span>📱 (+84) 374387627</span>
+            <span>✉️ <a href="mailto:locnguyen.151199@gmail.com">locnguyen.151199@gmail.com</a></span>
+            <span>📍 Ho Chi Minh City, Vietnam</span>
+        </div>
+    </header>
 
-    <a href="https://github.com/username">GitHub</a>
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h3 class="section-title">Summary</h3>
+            <p>Management Information Systems student at the University of Economics and Law, VNU HCMC, with hands-on experience in data analytics, SQL, and Power BI. Skilled in data modeling, dashboard development, and translating business requirements into data-driven insights. Seeking a Data Analyst and Data Intelligence opportunity to support business solutions and decision-making.</p>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h3 class="section-title">Education</h3>
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">University of Economics and Law - Vietnam National University HCMC (UEL)</div>
+                    <div class="item-date">2022 - 2026</div>
+                </div>
+                <div class="item-subtitle">Major: Management Information Systems (MIS)</div>
+                <p><strong>GPA:</strong> 8.2/10</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h3 class="section-title">Experiences</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Data Analyst Intern</div>
+                    <div class="item-date">Feb 2026 - Jun 2026</div>
+                </div>
+                <div class="item-subtitle">Bosch Software VietNam</div>
+                <ul class="details-list">
+                    <li>Developed and maintained 5 Power BI dashboards, providing actionable insights for department performance and project tracking, which reduced manual reporting time.</li>
+                    <li>Collaborated with cross-functional teams (PMs, PMOs, App Developers, and Department Managers) to gather business requirements and design optimized data schemas.</li>
+                    <li>Built and embedded interactive dashboard pages into internal applications to continuously monitor HR metrics and product performance across 2 active projects.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Data Analyst Intern</div>
+                    <div class="item-date">Dec 2025 - Jan 2026</div>
+                </div>
+                <div class="item-subtitle">Beq Holdings</div>
+                <ul class="details-list">
+                    <li>Extracted, cleaned, and standardized financial data from various sources using R and SQL to support financial analysis and market research.</li>
+                    <li>Calculated key financial KPIs from raw data and developed comprehensive analytical reports to support leadership in strategic decision-making.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h3 class="section-title">Academic Projects</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Banking Analytic Dashboard</div>
+                    <div class="item-date">June 2026</div>
+                </div>
+                <ul class="details-list">
+                    <li><strong>Description:</strong> Developed a retail banking analytics solution to investigate a critical decline in CASA balances and transform transactional data into actionable insights for business recovery.</li>
+                    <li><strong>Designed & Modeled:</strong> Designed a data model for 110K+ customers; built RFM Segmentation and Cohort Analysis matrices to pinpoint exactly where, when, and which customer tiers were draining CASA retention.</li>
+                    <li><strong>Developed dashboards:</strong> Developed Power BI dashboards with advanced DAX measures to analyze monthly net cash flows, product cross-selling rates, and credit card utilization to identify recovery opportunities.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Purchasing Analytics BI Solution</div>
+                    <div class="item-date">May 2024</div>
+                </div>
+                <ul class="details-list">
+                    <li><strong>Description:</strong> Designed and implemented a BI solution to support purchasing and operations, focusing on data integration, modeling, and developing KPI reporting.</li>
+                    <li>Analyzed business requirements and designed a Data Warehouse. Built a KPI matrix for purchasing.</li>
+                    <li>Conducted data exploration and cleaned data using Python and SQL Server.</li>
+                    <li>Developed an ETL pipeline in SSIS, wrote DAX to build dashboards in Power BI and track data accuracy.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Sales Analytics pipeline and Dashboard</div>
+                    <div class="item-date">Feb 2025</div>
+                </div>
+                <ul class="details-list">
+                    <li>Developed a sales analytics solution to transform raw transactional data into actionable insights for business.</li>
+                    <li>Built a Bronze-Silver-Gold data architecture using Azure Data Factory and Databricks.</li>
+                    <li>Designed data model, developed Power BI dashboards and measures using DAX for sales performance analysis.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h3 class="section-title">Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <strong>Data Analysis</strong>
+                    SQL, Google Bigquery, Python, R, Excel
+                </div>
+                <div class="skill-category">
+                    <strong>BI & Visualization</strong>
+                    Power BI, Tableau, DAX
+                </div>
+                <div class="skill-category">
+                    <strong>Data Engineering</strong>
+                    SQL Server, SSIS, Azure Data Factory, Databricks
+                </div>
+                <div class="skill-category">
+                    <strong>Data Modeling</strong>
+                    Star Schema, ETL, Data Warehouse, Bronze-Silver-Gold Architecture
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nguyễn Hữu Lộc. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
