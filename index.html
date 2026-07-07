@@ -61,10 +61,29 @@
     margin-right:8px;
     white-space:nowrap;
   }
-  .profile-img {
-    width: 400px;
-    float: right;
-    margin-right: 20px; /* tạo khoảng cách với nội dung bên phải */
+  .hero-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-left{
+    flex: 1;
+}
+
+.hero-right{
+    flex: 0 0 380px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img{
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
 }
   .tab{
     font-size:13px; font-weight:500; color:var(--text-dim);
@@ -265,34 +284,43 @@
 </nav>
 
 <header class="hero" id="overview">
-  <div class="wrap">
-    <div class="hero-eyebrow">
-      <span class="dot-live"></span> OPEN TO DATA ANALYST / DATA INTELLIGENCE ROLES
-      <span class="filetag">profile.pbix</span>
-    </div>
-    <h1 class="hero-name">Nguyễn Hữu Lộc</h1>
-    <p class="hero-tagline">I turn messy tables into dashboards people actually trust.</p>
-    <p class="hero-sub">
-      Management Information Systems student at the University of Economics and Law (VNU HCMC),
-      with hands-on experience across SQL, Power BI, and data modeling. I've spent the last year
-      turning raw transactions — bank accounts, purchase orders, sales pipelines — into schemas
-      and dashboards that hold up under real business questions.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:locnguyen.151199@gmail.com">Get in touch</a>
-      <a class="btn btn-ghost" href="tel:+84374387627">+84 374 387 627</a>
-    </div>
+  <div class="wrap hero-content">
 
-    <div class="kpi-grid">
-      <div class="kpi"><span class="kpi-value" data-count="8.2" data-decimal="1">0</span><span class="kpi-unit">/10</span><span class="kpi-label">GPA</span></div>
-      <div class="kpi"><span class="kpi-value" data-count="5">0</span><span class="kpi-unit">+</span><span class="kpi-label">Dashboards shipped</span></div>
-      <div class="kpi"><span class="kpi-value" data-count="3">0</span><span class="kpi-label">Academic projects</span></div>
-      <div class="kpi"><span class="kpi-value" data-count="2">0</span><span class="kpi-label">Internships</span></div>
+        <!-- Bên trái -->
+        <div class="hero-left">
+            <div class="hero-eyebrow">
+                <span class="dot-live"></span>
+                OPEN TO DATA ANALYST / DATA INTELLIGENCE ROLES
+                <span class="filetag">profile.pbix</span>
+            </div>
+
+            <h1 class="hero-name">Nguyễn Hữu Lộc</h1>
+
+            <p class="hero-tagline">
+                I turn messy tables into dashboards people actually trust.
+            </p>
+
+            <p class="hero-sub">
+                Management Information Systems student at the University of Economics and Law (VNU HCMC),
+                with hands-on experience across SQL, Power BI, and data modeling...
+            </p>
+
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="mailto:locnguyen.151199@gmail.com">Get in touch</a>
+                <a class="btn btn-ghost" href="tel:+84374387627">+84 374 387 627</a>
+            </div>
+
+            <div class="kpi-grid">
+                ...
+            </div>
+        </div>
+
+        <!-- Bên phải -->
+        <div class="hero-right">
+            <img src="material/IMG_0479.jpeg" class="profile-img" alt="Ảnh">
+        </div>
+
     </div>
-    <div class="wrap">
-    <img src="material/IMG_0479.jpeg" class="profile-img" alt="Ảnh">
-    </div>
-  </div>
 
   <svg class="hero-chart" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
     <defs>
