@@ -1,347 +1,557 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Nguyễn Hữu Lộc - Data Analyst</title>
-    <style>
-        :root {
-            --primary-color: #2E5A27; /* Màu xanh lá tối tương tự CV */
-            --secondary-color: #4A7C59;
-            --bg-color: #F8F9FA;
-            --text-color: #333333;
-            --light-bg: #FFFFFF;
-            --border-color: #E0E0E0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyen Huu Loc — Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E14;
+    --bg-elev:#121822;
+    --bg-elev-2:#1A222E;
+    --border:#232C38;
+    --text:#E9EEF5;
+    --text-dim:#8D97A6;
+    --text-faint:#5C6675;
+    --gold:#E8A93D;
+    --silver:#9FB3C8;
+    --bronze:#C97B4A;
+    --teal:#45D6A6;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; margin:0;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold); color:#0B0E14;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  .mono{font-family:'IBM Plex Mono',monospace;}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+  /* ---------- NAV / REPORT TABS ---------- */
+  .tabs{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,14,20,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .tabs-inner{
+    max-width:1080px; margin:0 auto;
+    display:flex; align-items:center; gap:4px;
+    padding:0 24px;
+    overflow-x:auto;
+  }
+  .tabs-logo{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; color:var(--gold);
+    letter-spacing:0.12em;
+    padding:16px 16px 16px 0;
+    border-right:1px solid var(--border);
+    margin-right:8px;
+    white-space:nowrap;
+  }
+  .tab{
+    font-size:13px; font-weight:500; color:var(--text-dim);
+    padding:16px 14px;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .tab:hover{color:var(--text);}
+  .tab.active{color:var(--text); border-bottom-color:var(--gold);}
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+  /* ---------- HERO ---------- */
+  .hero{position:relative; overflow:hidden; padding:72px 0 56px; border-bottom:1px solid var(--border);}
+  .hero-chart{position:absolute; right:-40px; top:20px; width:520px; max-width:60%; opacity:0.35; pointer-events:none;}
+  .hero-chart path.line{
+    fill:none; stroke:var(--gold); stroke-width:1.6;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.4s ease-out forwards .3s;
+  }
+  .hero-chart path.area{fill:url(#heroGrad); opacity:0.5;}
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
 
-        header h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: #D1E8D5;
-        }
+  .hero-eyebrow{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--text-dim); letter-spacing:0.08em; margin-bottom:22px;
+  }
+  .dot-live{
+    width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block;
+    box-shadow:0 0 0 0 rgba(69,214,166,0.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(69,214,166,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(69,214,166,0);}
+    100%{box-shadow:0 0 0 0 rgba(69,214,166,0);}
+  }
+  .filetag{
+    border:1px solid var(--border); padding:2px 8px; border-radius:4px;
+    color:var(--text-faint);
+  }
+  .hero-name{font-size:clamp(34px,5vw,52px); font-weight:700; letter-spacing:-0.01em;}
+  .hero-tagline{
+    font-size:clamp(18px,2.4vw,22px); color:var(--gold); font-weight:500;
+    margin-top:10px; max-width:640px;
+  }
+  .hero-sub{
+    margin-top:18px; color:var(--text-dim); font-size:15.5px; line-height:1.7; max-width:600px;
+  }
+  .hero-cta{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:8px; font-size:14px; font-weight:500;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold); color:#0B0E14;}
+  .btn-primary:hover{background:#f0b559;}
+  .btn-ghost{border-color:var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);}
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 1rem;
-        }
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px;
+    margin-top:44px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; max-width:640px;
+  }
+  .kpi{background:var(--bg-elev); padding:18px 16px;}
+  .kpi-value{font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:500; color:var(--text);}
+  .kpi-unit{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--text-faint);}
+  .kpi-label{display:block; margin-top:6px; font-size:11.5px; color:var(--text-dim); letter-spacing:0.02em;}
 
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-        }
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:64px 0; border-bottom:1px solid var(--border);}
+  .section-head{max-width:620px; margin-bottom:40px;}
+  .section-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-faint);
+    letter-spacing:0.1em; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(24px,3vw,30px); font-weight:600;}
+  .section-head p{color:var(--text-dim); margin-top:10px; font-size:14.5px; line-height:1.6;}
 
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
+  /* ---------- EDUCATION STRIP ---------- */
+  .edu-card{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px 28px;
+  }
+  .edu-card h3{font-size:17px; font-weight:600;}
+  .edu-card .edu-major{color:var(--text-dim); font-size:14px; margin-top:6px;}
+  .edu-meta{display:flex; gap:28px; flex-wrap:wrap;}
+  .edu-meta div{text-align:right;}
+  .edu-meta span{display:block;}
+  .edu-meta .label{font-size:11px; color:var(--text-faint); letter-spacing:.08em; margin-bottom:4px;}
+  .edu-meta .value{font-family:'IBM Plex Mono',monospace; font-size:16px; color:var(--gold);}
 
-        nav {
-            background-color: var(--light-bg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  /* ---------- EXPERIENCE PIPELINE ---------- */
+  .pipeline{position:relative;}
+  .pipe-node{position:relative; padding-left:28px; margin-bottom:36px;}
+  .pipe-node:last-child{margin-bottom:0;}
+  .pipe-node::before{
+    content:''; position:absolute; left:0; top:6px; width:12px; height:12px; border-radius:50%;
+    border:2px solid var(--bg); box-shadow:0 0 0 1px var(--border);
+  }
+  .pipe-node.bronze::before{background:var(--bronze);}
+  .pipe-node.gold::before{background:var(--gold);}
+  .pipe-node::after{
+    content:''; position:absolute; left:5px; top:22px; bottom:-36px; width:1px; background:var(--border);
+  }
+  .pipe-node:last-child::after{display:none;}
+  .pipe-marker{display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap;}
+  .pipe-stage{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); letter-spacing:.08em;}
+  .pipe-layer{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; padding:2px 8px; border-radius:4px; border:1px solid var(--border);}
+  .pipe-node.bronze .pipe-layer{color:var(--bronze); border-color:rgba(201,123,74,0.35);}
+  .pipe-node.gold .pipe-layer{color:var(--gold); border-color:rgba(232,169,61,0.35);}
+  .pipe-card{background:var(--bg-elev); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px;}
+  .pipe-card-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:12px;}
+  .pipe-card-head h3{font-size:17px; font-weight:600;}
+  .pipe-company{color:var(--text-dim); font-size:14px;}
+  .pipe-date{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text-faint);}
+  .pipe-card ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:14px; line-height:1.7;}
+  .pipe-card li{margin-bottom:6px;}
+  .pipe-card li:last-child{margin-bottom:0;}
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 15px 0;
-        }
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;}
+  .project-card{
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px 22px 20px; display:flex; flex-direction:column; height:100%;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .project-card:hover{border-color:var(--text-faint); transform:translateY(-2px);}
+  .project-date{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-faint); margin-bottom:8px;}
+  .project-card h3{font-size:16.5px; font-weight:600; margin-bottom:10px;}
+  .project-card p{color:var(--text-dim); font-size:13.8px; line-height:1.65; margin-bottom:16px; flex-grow:1;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 8px; border-radius:5px;
+    border:1px solid var(--border); color:var(--text-dim);
+  }
+  .tag.t-analysis{color:var(--teal); border-color:rgba(69,214,166,0.3);}
+  .tag.t-bi{color:var(--gold); border-color:rgba(232,169,61,0.3);}
+  .tag.t-eng{color:var(--bronze); border-color:rgba(201,123,74,0.3);}
+  .tag.t-model{color:var(--silver); border-color:rgba(159,179,200,0.3);}
+  .project-link{font-size:13px; color:var(--text); border-top:1px solid var(--border); padding-top:14px; display:flex; align-items:center; gap:6px;}
+  .project-link:hover{color:var(--gold);}
 
-        nav ul li {
-            margin: 0 20px;
-        }
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px;}
+  .skill-group{background:var(--bg-elev); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px;}
+  .skill-group-head{display:flex; align-items:center; gap:9px; margin-bottom:14px;}
+  .skill-dot{width:9px; height:9px; border-radius:50%;}
+  .skill-group h3{font-size:14.5px; font-weight:600;}
+  .skill-items{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-chip{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text-dim); background:var(--bg-elev-2); border:1px solid var(--border); padding:5px 10px; border-radius:6px;}
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
+  /* ---------- FOOTER / CONTACT ---------- */
+  .contact{border-bottom:none; padding-bottom:48px;}
+  .contact-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+  }
+  .contact-left h2{font-size:clamp(24px,3vw,30px); margin-bottom:10px;}
+  .contact-left p{color:var(--text-dim); font-size:14.5px; max-width:420px; line-height:1.6;}
+  .contact-list{margin-top:18px; display:flex; flex-direction:column; gap:6px;}
+  .contact-list a, .contact-list span{font-size:14px; color:var(--text-dim);}
+  .contact-list a:hover{color:var(--gold);}
+  .contact-right{display:flex; gap:12px; flex-wrap:wrap;}
+  .foot-note{margin-top:48px; padding-top:20px; border-top:1px solid var(--border); font-size:12px; color:var(--text-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
 
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
+  @media (max-width:720px){
+    .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr)); max-width:100%;}
+    .skills-grid{grid-template-columns:1fr;}
+    .edu-card{flex-direction:column;}
+    .edu-meta{gap:20px;}
+    .hero-chart{display:none;}
+    .pipe-date{margin-left:0;}
+    .contact-inner{flex-direction:column; align-items:flex-start;}
+  }
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            background-color: var(--light-bg);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h3.section-title {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .item {
-            margin-bottom: 25px;
-        }
-
-        .item:last-child {
-            margin-bottom: 0;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-
-        .item-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .item-subtitle {
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-        }
-
-        .item-date {
-            font-style: italic;
-            color: #666;
-        }
-
-        ul.details-list {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        ul.details-list li {
-            margin-bottom: 8px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #F1F5F2;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .skill-category strong {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #222;
-            color: white;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .item-header {
-                flex-direction: column;
-            }
-            nav ul {
-                flex-wrap: wrap;
-            }
-            nav ul li {
-                margin: 5px 10px;
-            }
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Nguyễn Hữu Lộc</h1>
-        <h2>Data Analyst</h2>
-        <div class="contact-info">
-            <span>📱 (+84) 374387627</span>
-            <span>✉️ <a href="mailto:locnguyen.151199@gmail.com">locnguyen.151199@gmail.com</a></span>
-            <span>📍 Ho Chi Minh City, Vietnam</span>
-        </div>
-    </header>
+<nav class="tabs">
+  <div class="tabs-inner">
+    <span class="tabs-logo">NHL</span>
+    <a href="#overview" class="tab active" data-tab>Overview</a>
+    <a href="#experience" class="tab" data-tab>Experience</a>
+    <a href="#projects" class="tab" data-tab>Projects</a>
+    <a href="#skills" class="tab" data-tab>Skills</a>
+    <a href="#contact" class="tab" data-tab>Contact</a>
+  </div>
+</nav>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <!-- About Section -->
-        <section id="about">
-            <h3 class="section-title">Summary</h3>
-            <p>Management Information Systems student at the University of Economics and Law, VNU HCMC, with hands-on experience in data analytics, SQL, and Power BI. Skilled in data modeling, dashboard development, and translating business requirements into data-driven insights. Seeking a Data Analyst and Data Intelligence opportunity to support business solutions and decision-making.</p>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education">
-            <h3 class="section-title">Education</h3>
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">University of Economics and Law - Vietnam National University HCMC (UEL)</div>
-                    <div class="item-date">2022 - 2026</div>
-                </div>
-                <div class="item-subtitle">Major: Management Information Systems (MIS)</div>
-                <p><strong>GPA:</strong> 8.2/10</p>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience">
-            <h3 class="section-title">Experiences</h3>
-            
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">Data Analyst Intern</div>
-                    <div class="item-date">Feb 2026 - Jun 2026</div>
-                </div>
-                <div class="item-subtitle">Bosch Software VietNam</div>
-                <ul class="details-list">
-                    <li>Developed and maintained 5 Power BI dashboards, providing actionable insights for department performance and project tracking, which reduced manual reporting time.</li>
-                    <li>Collaborated with cross-functional teams (PMs, PMOs, App Developers, and Department Managers) to gather business requirements and design optimized data schemas.</li>
-                    <li>Built and embedded interactive dashboard pages into internal applications to continuously monitor HR metrics and product performance across 2 active projects.</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">Data Analyst Intern</div>
-                    <div class="item-date">Dec 2025 - Jan 2026</div>
-                </div>
-                <div class="item-subtitle">Beq Holdings</div>
-                <ul class="details-list">
-                    <li>Extracted, cleaned, and standardized financial data from various sources using R and SQL to support financial analysis and market research.</li>
-                    <li>Calculated key financial KPIs from raw data and developed comprehensive analytical reports to support leadership in strategic decision-making.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h3 class="section-title">Academic Projects</h3>
-            
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">Banking Analytic Dashboard</div>
-                    <div class="item-date">June 2026</div>
-                </div>
-                <ul class="details-list">
-                    <li><strong>Description:</strong> Developed a retail banking analytics solution to investigate a critical decline in CASA balances and transform transactional data into actionable insights for business recovery.</li>
-                    <li><strong>Designed & Modeled:</strong> Designed a data model for 110K+ customers; built RFM Segmentation and Cohort Analysis matrices to pinpoint exactly where, when, and which customer tiers were draining CASA retention.</li>
-                    <li><strong>Developed dashboards:</strong> Developed Power BI dashboards with advanced DAX measures to analyze monthly net cash flows, product cross-selling rates, and credit card utilization to identify recovery opportunities.</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">Purchasing Analytics BI Solution</div>
-                    <div class="item-date">May 2024</div>
-                </div>
-                <ul class="details-list">
-                    <li><strong>Description:</strong> Designed and implemented a BI solution to support purchasing and operations, focusing on data integration, modeling, and developing KPI reporting.</li>
-                    <li>Analyzed business requirements and designed a Data Warehouse. Built a KPI matrix for purchasing.</li>
-                    <li>Conducted data exploration and cleaned data using Python and SQL Server.</li>
-                    <li>Developed an ETL pipeline in SSIS, wrote DAX to build dashboards in Power BI and track data accuracy.</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">Sales Analytics pipeline and Dashboard</div>
-                    <div class="item-date">Feb 2025</div>
-                </div>
-                <ul class="details-list">
-                    <li>Developed a sales analytics solution to transform raw transactional data into actionable insights for business.</li>
-                    <li>Built a Bronze-Silver-Gold data architecture using Azure Data Factory and Databricks.</li>
-                    <li>Designed data model, developed Power BI dashboards and measures using DAX for sales performance analysis.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h3 class="section-title">Technical Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <strong>Data Analysis</strong>
-                    SQL, Google Bigquery, Python, R, Excel
-                </div>
-                <div class="skill-category">
-                    <strong>BI & Visualization</strong>
-                    Power BI, Tableau, DAX
-                </div>
-                <div class="skill-category">
-                    <strong>Data Engineering</strong>
-                    SQL Server, SSIS, Azure Data Factory, Databricks
-                </div>
-                <div class="skill-category">
-                    <strong>Data Modeling</strong>
-                    Star Schema, ETL, Data Warehouse, Bronze-Silver-Gold Architecture
-                </div>
-            </div>
-        </section>
+<header class="hero" id="overview">
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="dot-live"></span> OPEN TO DATA ANALYST / DATA INTELLIGENCE ROLES
+      <span class="filetag">profile.pbix</span>
+    </div>
+    <h1 class="hero-name">Nguyễn Hữu Lộc</h1>
+    <p class="hero-tagline">I turn messy tables into dashboards people actually trust.</p>
+    <p class="hero-sub">
+      Management Information Systems student at the University of Economics and Law (VNU HCMC),
+      with hands-on experience across SQL, Power BI, and data modeling. I've spent the last year
+      turning raw transactions — bank accounts, purchase orders, sales pipelines — into schemas
+      and dashboards that hold up under real business questions.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:locnguyen.151199@gmail.com">Get in touch</a>
+      <a class="btn btn-ghost" href="tel:+84374387627">+84 374 387 627</a>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Nguyễn Hữu Lộc. All rights reserved.</p>
-    </footer>
+    <div class="kpi-grid">
+      <div class="kpi"><span class="kpi-value" data-count="8.2" data-decimal="1">0</span><span class="kpi-unit">/10</span><span class="kpi-label">GPA</span></div>
+      <div class="kpi"><span class="kpi-value" data-count="5">0</span><span class="kpi-unit">+</span><span class="kpi-label">Dashboards shipped</span></div>
+      <div class="kpi"><span class="kpi-value" data-count="3">0</span><span class="kpi-label">Academic projects</span></div>
+      <div class="kpi"><span class="kpi-value" data-count="2">0</span><span class="kpi-label">Internships</span></div>
+    </div>
+  </div>
+
+  <svg class="hero-chart" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#E8A93D" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#E8A93D" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path class="area" d="M0,150 L30,140 L60,150 L90,110 L120,120 L150,90 L180,100 L210,70 L240,80 L270,50 L300,60 L330,35 L360,45 L400,20 L400,200 L0,200 Z"/>
+    <path class="line" d="M0,150 L30,140 L60,150 L90,110 L120,120 L150,90 L180,100 L210,70 L240,80 L270,50 L300,60 L330,35 L360,45 L400,20"/>
+  </svg>
+</header>
+
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">01 · FOUNDATION</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-card">
+      <div>
+        <h3>University of Economics and Law – Vietnam National University HCMC (UEL)</h3>
+        <p class="edu-major">Major: Management Information Systems (MIS)</p>
+      </div>
+      <div class="edu-meta">
+        <div>
+          <span class="label">DURATION</span>
+          <span class="value mono">2022 – 2026</span>
+        </div>
+        <div>
+          <span class="label">GPA</span>
+          <span class="value mono">8.2 / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">02 · CAREER PIPELINE</span>
+      <h2>Bronze to Gold, in practice</h2>
+      <p>The same layered architecture I build for clients shows up in how I've grown — from raw extraction to polished, decision-ready dashboards.</p>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipe-node bronze">
+        <div class="pipe-marker">
+          <span class="pipe-stage">STAGE 01</span>
+          <span class="pipe-layer">BRONZE · RAW INGESTION</span>
+        </div>
+        <div class="pipe-card">
+          <div class="pipe-card-head">
+            <h3>Data Analyst Intern</h3>
+            <span class="pipe-company">Beq Holdings</span>
+            <span class="pipe-date">Dec 2025 – Jan 2026</span>
+          </div>
+          <ul>
+            <li>Extracted, cleaned, and standardized financial data from multiple sources using R and SQL to support financial analysis and market research.</li>
+            <li>Calculated key financial KPIs from raw data and built analytical reports to support leadership's strategic decisions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pipe-node gold">
+        <div class="pipe-marker">
+          <span class="pipe-stage">STAGE 02</span>
+          <span class="pipe-layer">GOLD · INSIGHT DELIVERY</span>
+        </div>
+        <div class="pipe-card">
+          <div class="pipe-card-head">
+            <h3>Data Analyst Intern</h3>
+            <span class="pipe-company">Bosch Software Vietnam</span>
+            <span class="pipe-date">Feb – Jun 2026</span>
+          </div>
+          <ul>
+            <li>Developed and maintained 5 Power BI dashboards, giving departments actionable insight into performance and project tracking, and cutting manual reporting time.</li>
+            <li>Partnered with PMs, PMOs, App Developers, and Department Managers to gather requirements and design optimized data schemas.</li>
+            <li>Embedded interactive dashboard pages into internal applications to monitor HR metrics and product performance across 2 active projects.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">03 · SELECTED WORK</span>
+      <h2>Academic Projects</h2>
+      <p>Three end-to-end builds — from business question, to data model, to dashboard.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-date mono">JUNE 2026</span>
+        <h3>Banking Analytics Dashboard</h3>
+        <p>Investigated a critical decline in CASA balances for a retail bank. Modeled 110K+ customers and built RFM segmentation and cohort analysis to pinpoint exactly where, when, and which customer tiers were driving the drop — then built Power BI dashboards with advanced DAX to track net cash flow, cross-selling, and credit card utilization.</p>
+        <div class="tag-row">
+          <span class="tag t-bi">Power BI</span>
+          <span class="tag t-bi">DAX</span>
+          <span class="tag t-analysis">RFM Segmentation</span>
+          <span class="tag t-analysis">Cohort Analysis</span>
+          <span class="tag t-model">Data Modeling</span>
+        </div>
+        <a class="project-link" href="#">View project →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-date mono">MAY 2024</span>
+        <h3>Purchasing Analytics BI Solution</h3>
+        <p>Designed and implemented a BI solution supporting purchasing and operations. Analyzed business requirements to design a data warehouse and KPI matrix, cleaned data with Python and SQL Server, then built an SSIS ETL pipeline feeding Power BI dashboards with DAX for tracking data accuracy.</p>
+        <div class="tag-row">
+          <span class="tag t-eng">SQL Server</span>
+          <span class="tag t-eng">SSIS</span>
+          <span class="tag t-analysis">Python</span>
+          <span class="tag t-bi">Power BI</span>
+          <span class="tag t-model">Data Warehouse</span>
+        </div>
+        <a class="project-link" href="#">View project →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-date mono">FEB 2025</span>
+        <h3>Sales Analytics Pipeline &amp; Dashboard</h3>
+        <p>Transformed raw transactional data into actionable sales insight by building a Bronze–Silver–Gold data architecture on Azure Data Factory and Databricks, then designed a data model and Power BI dashboards with DAX measures for sales performance analysis.</p>
+        <div class="tag-row">
+          <span class="tag t-eng">Azure Data Factory</span>
+          <span class="tag t-eng">Databricks</span>
+          <span class="tag t-model">Bronze-Silver-Gold</span>
+          <span class="tag t-bi">Power BI</span>
+          <span class="tag t-bi">DAX</span>
+        </div>
+        <a class="project-link" href="#">View project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">04 · TOOLKIT</span>
+      <h2>Skills, by layer</h2>
+      <p>Color-coded the same way I color-code a pipeline — analysis in, engineering underneath, BI on top.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-head">
+          <span class="skill-dot" style="background:var(--teal)"></span>
+          <h3>Data Analysis</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Google BigQuery</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">R</span>
+          <span class="skill-chip">Excel</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head">
+          <span class="skill-dot" style="background:var(--gold)"></span>
+          <h3>BI &amp; Visualization</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Tableau</span>
+          <span class="skill-chip">DAX</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head">
+          <span class="skill-dot" style="background:var(--bronze)"></span>
+          <h3>Data Engineering</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-chip">SQL Server</span>
+          <span class="skill-chip">SSIS</span>
+          <span class="skill-chip">Azure Data Factory</span>
+          <span class="skill-chip">Databricks</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head">
+          <span class="skill-dot" style="background:var(--silver)"></span>
+          <h3>Data Modeling</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-chip">Star Schema</span>
+          <span class="skill-chip">ETL</span>
+          <span class="skill-chip">Data Warehouse</span>
+          <span class="skill-chip">Bronze-Silver-Gold</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="section contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <h2>Let's talk data.</h2>
+        <p>Looking for a Data Analyst or Data Intelligence opportunity where I can help turn business questions into dashboards people rely on.</p>
+        <div class="contact-list">
+          <a href="mailto:locnguyen.151199@gmail.com">locnguyen.151199@gmail.com</a>
+          <a href="tel:+84374387627">+84 374 387 627</a>
+          <span>Ho Chi Minh City, Vietnam</span>
+        </div>
+      </div>
+      <div class="contact-right">
+        <a class="btn btn-primary" href="mailto:locnguyen.151199@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="tel:+84374387627">Call me</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 Nguyễn Hữu Lộc</span>
+      <span class="mono">last refreshed · Jul 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-spy for tabs
+  const tabs = document.querySelectorAll('[data-tab]');
+  const sections = ['overview','experience','projects','skills','contact'].map(id => document.getElementById(id));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        tabs.forEach(t => t.classList.toggle('active', t.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => { if(s) io.observe(s); });
+
+  // KPI count-up
+  const kpiEls = document.querySelectorAll('.kpi-value');
+  const kpiObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseFloat(el.getAttribute('data-count'));
+        const decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          el.textContent = decimals ? value.toFixed(decimals) : Math.round(value);
+          if(progress < 1){ requestAnimationFrame(tick); }
+        }
+        requestAnimationFrame(tick);
+        kpiObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  kpiEls.forEach(el => kpiObserver.observe(el));
+</script>
 
 </body>
 </html>
